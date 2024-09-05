@@ -1,20 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import VehiclesList from "./components/vehicles-list/VehiclesList";
+import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
+import { Provider } from 'react-native-paper';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { View, Text } from "react-native";
+import CameraScreen from "./screens/Camera";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    const Tab = createMaterialBottomTabNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    return (
+        <>
+        <StatusBar style='light'/>
+        <Provider>
+
+            <NavigationContainer >
+                <Tab.Navigator>
+                    <Tab.Screen
+                        name="Pojazdy"
+                        component={VehiclesList}
+                        options={{
+                            tabBarIcon: ({ color }) => (
+                                <MaterialCommunityIcons name="car" color={color} size={26} />
+                            ),
+                        }}
+                    />
+                    <Tab.Screen
+                        name="Zrób zdjęcie"
+                        component={CameraScreen}
+                        options={{
+                            tabBarIcon: ({ color }) => (
+                                <MaterialCommunityIcons name="camera" color={color} size={26} />
+                            ),
+                        }}
+                    />
+                </Tab.Navigator>
+            </NavigationContainer>
+        </Provider>
+        </>
+    );
+}
