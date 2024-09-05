@@ -17,9 +17,13 @@ const ImagePicker = ({ onPhotoCreated }) => {
     }
 
     return (
-        <View style={{backgroundColor: '#efefef', paddingVertical: 6, alignItems: 'center', marginBottom: 12}}>
-            <Pressable onPress={takeImageHandler} android_ripple={{color: '#e5e5e5'}} style={({pressed}) => pressed && {color: '#e5e5e5'}}>
-                <View style={{ borderColor: '#77a', borderRadius: 4, borderWidth: 1, paddingHorizontal: 10}}>
+        <View style={{ backgroundColor: '#efefef', paddingVertical: 6, alignItems: 'center', marginBottom: 12 }}>
+            <Pressable
+                onPress={takeImageHandler}
+                android_ripple={{color: '#e5e5e5'}}
+                style={({pressed}) => pressed && {color: '#e5e5e5'}}
+            >
+                <View style={{ borderColor: '#77a', borderRadius: 4, borderWidth: 1, paddingHorizontal: 10 }}>
                 <Icon size={36} source={'camera'} color={'#555'} />
                 </View>
             </Pressable>
